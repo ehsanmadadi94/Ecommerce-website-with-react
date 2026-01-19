@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from 'next/link';
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,11 +14,14 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+
+
+
   return (
     <div
-      className={`${geistSans.className} ${geistMono.className} flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black`}
+      className={`${geistSans.className} ${geistMono.className} flex min-h-screen items-center justify-center  font-sans bg-dark `}
     >
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+      {/* <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
         <Image
           className="dark:invert"
           src="/next.svg"
@@ -72,7 +77,10 @@ export default function Home() {
             Documentation
           </a>
         </div>
-      </main>
+      </main> */}
+      <Link className='bg-gray-100 text-black rounded p-6' href='/signup'>
+      <h1>SignUp</h1></Link>
+
     </div>
   );
 }

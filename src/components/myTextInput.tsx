@@ -23,11 +23,11 @@ const MyTextInput = ({ name, label, type, placeholder, ...rest }: MyTextInputPro
   }
 
   return (
-    <div className="p-6">
-      <label htmlFor={name} >{label}</label>
-      <Field {...fieldProps} />
-      <ErrorMessage name={name} />
-    </div>
+    <>
+    <label className="block" htmlFor={name} >{label}</label>
+    <Field className="block" {...fieldProps} />
+    <ErrorMessage className="block" name={name} />
+    </>
   );
 };
 

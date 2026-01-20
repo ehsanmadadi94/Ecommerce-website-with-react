@@ -71,8 +71,8 @@ export default function SignUp(){
     }
 
     return(
-        <>
-        <Formik
+        <div className="bg-gray-500 w-2/4 h-2/4 p-10 d-flex flex-col justify-center  justify-items-center justify-self-center">
+          <Formik
       initialValues={{
       name:'',
       username:'',
@@ -83,38 +83,38 @@ export default function SignUp(){
     validationSchema={registerFormSchema}
     onSubmit={submithandler}
       >
-        <Form  className="bg-gray-900  p-10">
-        <div>
+        <Form className="w-full" >
+        <div className="p-6">
           <MyTextInput name='name' label='Name:' type='text' placeholder='Please Enter your name...'/>
         </div>
-        <div>
+        <div className="p-6">
           <MyTextInput name='username' label='Username:' type='text' placeholder='Please Enter your username...'/>
         </div>
-        <div>
+        <div className="p-6">
           <MyTextInput name='email' label='Email:' type='email' placeholder='Please Enter your Email...'/>
         </div>
-        <div>
+        <div className="p-6">
           <MyTextInput name='password' label='Password:' type='password' placeholder='Please Enter your password...'/>
         </div>
-        <div>
+        <div className="p-6">
           <MyTextInput name='about' label='About Me:' type='textarea' placeholder='Tell Us about yourself...'/>
         </div>
-        <div>
-          <label htmlFor="gender">Sex</label>
-          <Field name='gender' as='select' className='bg-gray-100 mx-4 text-black'>
+        <div className="p-6">
+          <label className="block" htmlFor="gender">Sex</label>
+          <Field name='gender'  as='select' className='bg-gray-100 mx-4 text-black block w-full'>
             <option value='male'>Male</option>
             <option value='female'>Female</option>
           </Field>
           <ErrorMessage name='gender'/>
         </div>
-        <div>
-          <label htmlFor="rule">I have read and accept the rules.</label>
-          <Field type='checkbox' name='rule'/>
+        <div className="p-6">
+          <label className="block" htmlFor="rule">I have read and accept the rules.</label>
+          <Field className="block" type='checkbox' name='rule'/>
           <ErrorMessage name='rule'/>
         </div>
-        <button type="submit" className="bg-gray-600 p-2 rounded bordered border-red-500 m-auto ">Send</button>
+        <button type="submit" className="bg-gray-600 p-2 rounded bordered border-red-500 m-auto block">Send</button>
       </Form>
       </Formik>
-        </>
+        </div>
     )
 }

@@ -5,29 +5,46 @@ type MyTextInputProps = {
   label: string;
   type: string;
   placeholder?: string;
-  [key: string]: any;
 };
 
-const MyTextInput = ({ name, label, type, placeholder, ...rest }: MyTextInputProps) => {
-  const fieldProps: any = {
-    name: name,
-    placeholder: placeholder,
-    className: "bg-gray-100 text-red-600 rounded ms-2 p-1",
-    ...rest
-  };
-
-  if (type === 'textarea') {
-    fieldProps.as = 'textarea';
-  } else {
-    fieldProps.type = type;
-  }
-
+const MyTextInput = ({
+  name,
+  label,
+  type,
+  placeholder,
+}: MyTextInputProps) => {
   return (
-    <>
-    <label className="block" htmlFor={name} >{label}</label>
-    <Field className="block" {...fieldProps} />
-    <ErrorMessage className="block" name={name} />
-    </>
+    <div>
+      <label
+        htmlFor={name}
+        className="block mb-1 text-sm font-medium text-slate-700"
+      >
+        {label}
+      </label>
+
+      <Field
+        name={name}
+        as={type === "textarea" ? "textarea" : "input"}
+        type={type !== "textarea" ? type : undefined}
+        placeholder={placeholder}
+        className="
+          block w-full rounded-lg border border-slate-300
+          bg-white px-3 py-2 text-slate-900
+          placeholder-slate-400
+          focus:outline-none focus:ring-2 focus:ring-indigo-500
+          focus:border-indigo-500
+          transition
+          min-h-[42px]
+          resize-none
+        "
+      />
+
+      <ErrorMessage
+        name={name}
+        component="p"
+        className="mt-1 text-sm text-red-500"
+      />
+    </div>
   );
 };
 

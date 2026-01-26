@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import MyTextInput from "@/components/MyTextInput";
+import MyTextInput from "@/components/myTextInput";
 import { boolean, object, string } from "yup";
 
 export default function SignUp() {

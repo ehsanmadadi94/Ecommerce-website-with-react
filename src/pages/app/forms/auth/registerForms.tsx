@@ -142,15 +142,12 @@ interface MyTextInputPropsnewProps {
 }
 
 const RegisterForm = withFormik<MyTextInputPropsnewProps , MyTextInputProps>({
-    mapPropsToValues : props => {
-        return {
-            name : props.name ?? '',
+    mapPropsToValues : props => ({
+            name : '',
             email : '',
             label: '',
             type: '',
-
-        }
-    },
+        }),
     handleSubmit : (values) => {
         console.log(values);
     }

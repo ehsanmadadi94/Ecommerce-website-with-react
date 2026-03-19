@@ -79,7 +79,10 @@ export default function Home() {
         </div>
       </main> */}
       <Link className='bg-gray-100 text-black rounded p-6' href='/signup'>
-      <h1>SignUp</h1></Link>
+      <h1>Sign Up</h1></Link>
+      <br />
+      <Link className='bg-gray-100 text-black rounded p-6' href='/signin'>
+      <h1>Sign In</h1></Link>
 
     </div>
   );

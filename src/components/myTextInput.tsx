@@ -17,7 +17,7 @@ const MyTextInput = ({
     <div>
       <label
         htmlFor={name}
-        className="block mb-1 text-sm font-medium text-slate-700"
+        className="block mb-1 text-sm font-medium text-blue-700"
       >
         {label}
       </label>

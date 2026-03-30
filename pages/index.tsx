@@ -78,10 +78,10 @@ export default function Home() {
           </a>
         </div>
       </main> */}
-      <Link className='bg-gray-100 text-black rounded p-6' href='/signup'>
+      <Link className='bg-gray-100 text-black rounded p-6' href='./auth/register'>
       <h1>Sign Up</h1></Link>
       <br />
-      <Link className='bg-gray-100 text-black rounded p-6' href='/signin'>
+      <Link className='bg-gray-100 text-black rounded p-6' href='./auth/login'>
       <h1>Sign In</h1></Link>
 
     </div>

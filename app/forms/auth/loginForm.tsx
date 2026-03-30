@@ -1,5 +1,5 @@
 import { Form, FormikProps, withFormik ,ErrorMessage, Field, Formik } from "formik";
-import MyTextInput from "../../../../components/myTextInput";
+import MyTextInput from "../../components/shared/form/input"
 import { boolean, object, string } from "yup";
 
 // interface RegisterFormValues {

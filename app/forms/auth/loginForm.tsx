@@ -1,156 +1,52 @@
-import { Form, FormikProps, withFormik ,ErrorMessage, Field, Formik } from "formik";
-import MyTextInput from "../../components/shared/form/input"
-import { boolean, object, string } from "yup";
+import { Form, FormikProps, withFormik } from "formik";
+import Input from "../../components/shared/form/input";
+import * as yup from "yup";
 
-// interface RegisterFormValues {
-//     name: string,
-//     email: string,
-//     password: string
-// }
-type MyTextInputProps = {
-  name: string;
-  label: string;
-  type: string;
-  placeholder?: string;
-};
+interface LoginFormValues {
+    email: string,
+    password: string
+}
 
-const InnerRegisterForm = (props : FormikProps<MyTextInputProps>) => {
-      const registerFormSchema = object({
-    name: string().required("Required").min(3, "At least 3 characters"),
-    username: string().required("Required").min(6, "At least 6 characters"),
-    email: string().required("Required").email("Invalid email"),
-    password: string().required("Required").min(8, "At least 8 characters"),
-    about: string().required("Required"),
-    gender: string().required("Required").matches(/(male|female)/),
-    rule: boolean().oneOf([true], "You must accept the rules"),
-  });
-
-  const submithandler = (values: any) => {
-    console.log(values);
-  };
+const InnerLoginForm = (props : FormikProps<LoginFormValues>) => {
     return (
-        <Formik
-          initialValues={{
-            name: "",
-            username: "",
-            email: "",
-            password: "",
-            about: "",
-            gender: "",
-            rule: false,
-          }}
-          validationSchema={registerFormSchema}
-          onSubmit={submithandler}
-        >
-        <Form className="space-y-5 md:space-y-6">
-            <MyTextInput
-              name="name"
-              label="Name"
-              type="text"
-              placeholder="Enter your name"
-            />
-
-
-            <MyTextInput
-              name="username"
-              label="Username"
-              type="text"
-              placeholder="Enter your username"
-            />
-
-            <MyTextInput
-              name="email"
-              label="Email"
-              type="email"
-              placeholder="Enter your email"
-            />
-
-            <MyTextInput
-              name="password"
-              label="Password"
-              type="password"
-              placeholder="Enter your password"
-            />
-
-            <MyTextInput
-              name="about"
-              label="About Me"
-              type="textarea"
-              placeholder="Tell us about yourself"
-            />
+        <Form className="space-y-6">
             <div>
-              <label className="block mb-1 text-sm font-medium text-slate-700">
-                Gender
-              </label>
-              <Field
-                as="select"
-                name="gender"
-                className="
-                  w-full rounded-lg border border-slate-300
-                  bg-white px-3 py-2 text-slate-900
-                  focus:outline-none focus:ring-2 focus:ring-indigo-500
-                "
-              >
-                <option value="">Select gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </Field>
-              <ErrorMessage
-                name="gender"
-                component="p"
-                className="mt-1 text-sm text-red-500"
-              />
+                <Input name='email' type='email' label="Email Address"/>
             </div>
-            <div className="flex items-start gap-2">
-              <Field
-                type="checkbox"
-                name="rule"
-                className="
-                  mt-1 h-4 w-4 rounded
-                  text-indigo-600 focus:ring-indigo-500
-                "
-              />
-              <label className="text-sm text-slate-700">
-                I have read and accept the rules.
-              </label>
-            </div>
-            <ErrorMessage
-              name="rule"
-              component="p"
-              className="text-sm text-red-500"
-            />
 
-            <button
-              type="submit"
-              className="
-                w-full rounded-lg bg-indigo-600
-                py-2.5 text-white font-semibold
-                hover:bg-indigo-700
-                focus:outline-none focus:ring-2 focus:ring-indigo-500
-                transition
-              "
-            >
-              Create Account
-            </button>
-          </Form>
-          </Formik>
+            <div>
+                <Input name='password' type='password' label="Password"/>
+            </div>
+
+            <div>
+                <button
+                    type="submit"
+                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                    Login
+                </button>
+            </div>
+        </Form>
     )
 }
 
-interface MyTextInputPropsnewProps {
-    name? : string
+interface LoginFormProps {
 }
 
-const RegisterForm = withFormik<MyTextInputPropsnewProps , MyTextInputProps>({
+const loginFormValidationSchema = yup.object().shape({
+    email : yup.string().required().email(),
+    password : yup.string().required().min(8)
+})
+
+const LoginForm = withFormik<LoginFormProps , LoginFormValues>({
     mapPropsToValues : props => ({
-            name : '',
-            email : '',
-            label: '',
-            type: '',
-        }),
+        email : '',
+        password : ''
+    }),
+    validationSchema: loginFormValidationSchema,
     handleSubmit : (values) => {
         console.log(values);
     }
-})(InnerRegisterForm)
+})(InnerLoginForm)
 
-export default RegisterForm;
+export default LoginForm;

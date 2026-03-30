@@ -1,5 +1,5 @@
 import { Form, FormikProps, withFormik ,ErrorMessage, Field, Formik } from "formik";
-import MyTextInput from "../../components/shared/form/input"
+import Input from "../../components/shared/form/input"
 import { boolean, object, string } from "yup";
 
 // interface RegisterFormValues {
@@ -7,14 +7,14 @@ import { boolean, object, string } from "yup";
 //     email: string,
 //     password: string
 // }
-type MyTextInputProps = {
+type InputProps = {
   name: string;
   label: string;
   type: string;
   placeholder?: string;
 };
 
-const InnerRegisterForm = (props : FormikProps<MyTextInputProps>) => {
+const InnerRegisterForm = (props : FormikProps<InputProps>) => {
       const registerFormSchema = object({
     name: string().required("Required").min(3, "At least 3 characters"),
     username: string().required("Required").min(6, "At least 6 characters"),
@@ -43,7 +43,7 @@ const InnerRegisterForm = (props : FormikProps<MyTextInputProps>) => {
           onSubmit={submithandler}
         >
         <Form className="space-y-5 md:space-y-6">
-            <MyTextInput
+            <Input
               name="name"
               label="Name"
               type="text"
@@ -51,28 +51,28 @@ const InnerRegisterForm = (props : FormikProps<MyTextInputProps>) => {
             />
 
 
-            <MyTextInput
+            <Input
               name="username"
               label="Username"
               type="text"
               placeholder="Enter your username"
             />
 
-            <MyTextInput
+            <Input
               name="email"
               label="Email"
               type="email"
               placeholder="Enter your email"
             />
 
-            <MyTextInput
+            <Input
               name="password"
               label="Password"
               type="password"
               placeholder="Enter your password"
             />
 
-            <MyTextInput
+            <Input
               name="about"
               label="About Me"
               type="textarea"
@@ -137,11 +137,11 @@ const InnerRegisterForm = (props : FormikProps<MyTextInputProps>) => {
     )
 }
 
-interface MyTextInputPropsnewProps {
+interface InputPropsnewProps {
     name? : string
 }
 
-const RegisterForm = withFormik<MyTextInputPropsnewProps , MyTextInputProps>({
+const RegisterForm = withFormik<InputPropsnewProps , InputProps>({
     mapPropsToValues : props => ({
             name : '',
             email : '',

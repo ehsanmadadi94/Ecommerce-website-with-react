@@ -7,7 +7,7 @@ type MyTextInputProps = {
   placeholder?: string;
 };
 
-const MyTextInput = ({
+const Input = ({
   name,
   label,
   type,
@@ -48,4 +48,4 @@ const MyTextInput = ({
   );
 };
 
-export default MyTextInput;
+export default Input;

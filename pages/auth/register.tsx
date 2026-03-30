@@ -1,4 +1,4 @@
-import RegisterForm from '../../app/forms/auth/registerForms'
+import RegisterForm from '../../app/forms/auth/registerForm'
 
 export default function SignUp() {
 
